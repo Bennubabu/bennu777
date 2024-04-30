@@ -1,0 +1,37 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+    .user{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .loginbtn{
+        width: 200px;
+        height: 50px;
+        padding: 14px;
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+<div class="user">
+        
+    <button id="admin" class="btn btn-warning mb-5 loginbtn">ADMIN</button>
+    {% if request.user.is_authenticated %}
+        <a id="logout" href="{% url 'APP:logout' %}" class="btn btn-danger loginbtn">LOGOUT</a>
+    {% else %}
+        <button id="customer" class="btn btn-primary loginbtn">CUSTOMER</button>
+    {% endif %}
+</div>
+
+<script src="{% static 'userjs.js' %}"></script>
+
+{% endblock body %}

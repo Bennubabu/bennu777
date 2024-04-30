@@ -1,0 +1,263 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'cartpages.css' %}">
+<style>
+    @media only screen and (min-width:0px) and (max-width:365px){
+        .paymentform{
+        width: 100%;
+        height: 600px;
+        position: relative;
+        top: 100px;
+        margin-right:0px;
+        padding: 8px;
+
+        /* background-color: rgba(206, 206, 206, 0.688); */
+        
+
+    }
+
+    .cartitemsdivallele{
+        width: 100%;
+        height: auto;
+        /* background-color: yellow; */
+        position: relative;
+        top: 85px;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    }
+
+
+    @media only screen and (min-width:365px) and (max-width:425px){
+        .paymentform{
+        width: 100%;
+        height: 600px;
+        position: relative;
+        top: 100px;
+        margin-right:0px;
+        padding: 8px;
+
+        /* background-color: rgba(206, 206, 206, 0.688); */
+        
+
+    }
+
+    .cartitemsdivallele{
+        width: 100%;
+        height: auto;
+        /* background-color: yellow; */
+        position: relative;
+        top: 85px;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    }
+
+</style>
+{% endblock head %}
+
+
+{% block body %}
+
+        <div class="alldivs">
+            
+            <div class="cartitemsdivallele" id="carite">
+                <h3 style="text-align: center; color: #1D63FF; font-weight: bold;">Shopping Cart</h3>
+                <div class="allitems card card-body">
+                    {% if cartitems or onepluscartitem or samsungcartitem or redmicartitem or realmecartitem %}
+                    {% for i in cartitems %}
+                    <div class="cartitemsdiv">
+            
+                            <img src="{{i.appleproduct.Image.url}}" alt="">
+                            <div class="divnames">
+                                <h4 style="font-weight: bold;">{{i.appleproduct.Name}}</h4>
+                                <h5 style="font-weight: bold;">{{i.appleproduct.Cost}}  /- Rs</h5>
+                                <span style="color: rgb(13, 255, 0);">In stock</span>
+                                <p><span>Eligible for FREE Shipping</span></p>
+                                <div class="d-flex justify-content-evenly">
+                                    <a class="btn btn-danger" href="{% url 'APP:decrement' i.appleproduct.id %}">-</a>{{i.quantity}}<a class="btn btn-primary" href="{% url 'APP:increment' i.appleproduct.id %}">+</a>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="{% url 'APP:removeitemcart' i.id %}"><button class="btn btn-danger">REMOVE</button></a>
+                            </div>
+                    </div>
+                    {% endfor %}
+            
+                    {% for i in onepluscartitem %}
+                    <div class="cartitemsdiv">
+            
+                            <img src="{{i.oneplusproduct.Image.url}}" alt="">
+                            <div class="divnames">
+                                <h4>{{i.oneplusproduct.Name}}</h4>
+                                <h5>{{i.oneplusproduct.Cost}}/- Rs</h5>
+                                <span style="color: rgb(13, 255, 0);">In stock</span>
+                                <p><span>Eligible for FREE Shipping</span></p>
+                                <div class="d-flex justify-content-evenly">
+                                    <a class="btn btn-danger" href="{% url 'APP:oneplusdecrement' i.oneplusproduct.id %}" style="width: 30px; height: 30px;">-</a>{{i.quantity}}<a class="btn btn-primary" href="{% url 'APP:oneplusincrement' i.oneplusproduct.id %}" style="width: 30px; height: 30px;">+</a>
+                                </div>
+                                
+                            </div>
+                            <div>
+                                <a href="{% url 'APP:oneplusremoveitemcart' i.id %}"><button class="btn btn-danger">REMOVE</button></a>
+                            </div>
+            
+                        
+                    </div>
+                    {% endfor %}
+            
+            
+                    {% for i in samsungcartitem %}
+                    <div class="cartitemsdiv">
+            
+                            <img src="{{i.samsungproduct.Image.url}}" alt="">
+                            <div class="divnames">
+                                <h4>{{i.samsungproduct.Name}}</h4>
+                                <h5>{{i.samsungproduct.Cost}}/- Rs</h5>
+                                <span style="color: rgb(13, 255, 0);">In stock</span>
+                                <p><span>Eligible for FREE Shipping</span></p>
+                                <div class="d-flex justify-content-evenly">
+                                    <a class="btn btn-danger" href="{% url 'APP:samsungdecrement' i.samsungproduct.id %}" style="width: 30px; height: 30px;">-</a>{{i.quantity}}<a class="btn btn-primary" href="{% url 'APP:samsungincrement' i.samsungproduct.id %}" style="width: 30px; height: 30px;">+</a>
+                                </div>
+                                
+                            </div>
+                            <div>
+                                <a href="{% url 'APP:samsungremoveitemcart' i.id %}"><button class="btn btn-danger">REMOVE</button></a>
+                            </div>
+            
+                        
+                    </div>
+                    {% endfor %}
+                    
+            
+                    {% for i in redmicartitem %}
+                    <div class="cartitemsdiv">
+            
+                            <img src="{{i.redmiproduct.Image.url}}" alt="">
+                            <div class="divnames">
+                                <h4>{{i.redmiproduct.Name}}</h4>
+                                <h5>{{i.redmiproduct.Cost}}/- Rs</h5>
+                                <span style="color: rgb(13, 255, 0);">In stock</span>
+                                <p><span>Eligible for FREE Shipping</span></p>
+                                <div class="d-flex justify-content-evenly">
+                                    <a class="btn btn-danger" href="{% url 'APP:redmidecrement' i.redmiproduct.id %}" style="width: 30px; height: 30px;">-</a>{{i.quantity}}<a class="btn btn-primary" href="{% url 'APP:redmiincrement' i.redmiproduct.id %}" style="width: 30px; height: 30px;">+</a>
+                                </div>
+                                
+                            </div>
+                            <div>
+                                <a href="{% url 'APP:redmiremoveitemcart' i.id %}"><button class="btn btn-danger">REMOVE</button></a>
+                            </div>
+            
+                        
+                    </div>
+                    {% endfor %}
+                    
+            
+            
+                    {% for i in realmecartitem %}
+                    <div class="cartitemsdiv">
+            
+                            <img src="{{i.realmeproduct.Image.url}}" alt="">
+                            <div class="divnames">
+                                <h4>{{i.realmeproduct.Name}}</h4>
+                                <h5>{{i.realmeproduct.Cost}}/- Rs</h5>
+                                <span style="color: rgb(13, 255, 0);">In stock</span>
+                                <p><span>Eligible for FREE Shipping</span></p>
+                                <div class="d-flex justify-content-evenly">
+                                    <a class="btn btn-danger" href="{% url 'APP:realmedecrement' i.realmeproduct.id %}" style="width: 30px; height: 30px;">-</a>{{i.quantity}}<a class="btn btn-primary" href="{% url 'APP:realmeincrement' i.realmeproduct.id %}" style="width: 30px; height: 30px;">+</a>
+                                </div>
+                                
+                            </div>
+                            <div>
+                                <a href="{% url 'APP:realmeremoveitemcart' i.id %}"><button class="btn btn-danger">REMOVE</button></a>
+                            </div>
+            
+                        
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <div style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <h3 style="width: fit-content;">YOUR CART IS EMPTY</h3>
+                            <a href="{% url 'AppleApp:categories' %}" class="btn btn-primary" style="width: 200px;">SHOP NOW</a>
+                        </div>
+                    {% endif %}
+                    
+    
+                    
+                </div>
+                <div class="card card-header d-flex justify-content-center align-items-center">
+                    <p class="totalpri d-flex justify-content-between align-items-center"><b style="width: fit-content;">TOTAL PRIZE :</b>  <b style="width: fit-content;">{{totalprize}}/- Rs</b></p>
+                </div>
+            </div>
+
+            <div class="paymentform">
+                <h3 style="text-align: center; font-weight: bold;" class="text-success">Address and Payment Details</h3>
+                {% for i in messages %}
+                <div class="alert alert-warning">
+                    {{i}}
+                </div>
+                {% endfor %}
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="card card-body h-75 overflow-scroll">
+                        <div class="mb-4 d-flex justify-content-start align-items-center">
+                            <label for="fn" class="form-label" style="width: 150px;">Full Name</label>
+                            <input type="text" name="FullName" id="fn" class="form-control" style="width: 300px;">
+                        </div>
+        
+                        <div class="mb-4 d-flex justify-content-start align-items-center">
+                            <label for="e" class="form-label" style="width: 150px;">Email</label>
+                            <input type="email" name="email" id="e" class="form-control" style="width: 300px;">
+                        </div>
+    
+                        <div class="mb-4 d-flex justify-content-start align-items-center">
+                            <label for="ph" class="form-label" style="width: 150px;">Mobile Number</label>
+                            <input type="tel" name="PhNo" id="ph" class="form-control" style="width: 300px;">
+                        </div>
+                        
+                        <div class="mb-4 d-flex justify-content-start align-items-center">
+                            <label for="pm" class="form-label" style="width: 200px;">Payment mode</label>
+                            <select name="PaymentMode" id="pm" class="form-control" style="width: 250px;">
+                                <option value="UPI">UPI</option>
+                                <option value="COD">COD</option>
+                            </select>
+                        </div>
+    
+                        <div class="mb-4 d-flex justify-content-start align-items-center">
+                            <label for="pin" class="form-label" style="width: 150px;">Pin Code</label>
+                            <input type="number" maxlength="1000" minlength="500" name="PinCode" id="pin" class="form-control" style="width: 300px;">
+                        </div>
+    
+                        <div class="mb-4 d-flex justify-content-start align-items-center">
+                            <label for="ad" class="form-label" style="width: 150px;">Address</label>
+                            <textarea type="text" name="Address" id="ad" class="form-control" cols="30" rows="6" style="width: 300px;">
+                            </textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-2">
+                        <input type="submit" class="btn btn-success" value="Place Order">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+        
+        
+
+<script src="{% static 'cartit.js' %}"></script>
+
+{% endblock body %}

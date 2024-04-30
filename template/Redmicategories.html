@@ -1,0 +1,81 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'CATEGORIES.css' %}">
+<style>
+    .cartmess{
+        position: relative; 
+        top: 200px;
+        left: 168px;
+    }
+
+    @media only screen and (min-width:0px) and (max-width:365px){
+        .cartmess{
+        position: relative; 
+        top: 200px;
+        left: 50px;
+    }
+    }
+</style>
+{% endblock head %}
+
+{% block body %}
+
+<div id="cate">
+    <a id="applecate1" href="{% url 'AppleApp:categories' %}">
+        Apple
+    </a>
+    <a id="onepluscate1" href="{% url 'OneplusAPP:Onepluscategories' %}">
+        Oneplus
+    </a>
+    <a id="samsungcate1" href="{% url 'SamsungApp:samsungcategories' %}">
+        Samsung
+    </a>
+    <a id="redmicate1" href="{% url 'RedmiApp:redmicategories' %}">
+    Redmi
+    </a>
+    <a id="realmecate1" href="{% url 'RealmeApp:realmecategories' %}">
+    Realme
+    </a>
+
+</div>
+
+{% for i in messages %}
+<div class="cartmess w-75 alert alert-success alert-dismissible fade show">
+    {{i}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %} 
+
+
+<div id="totalcd14">
+    {% for i in rd %}
+        {% if i.id != 1 %}
+        <div class="cards1" style="position: relative;">
+            <div id="img4ele">
+                <a href="{% url 'RedmiApp:redmipro' i.slug %}"><img src="{{i.Image.url}}" alt="redmi"></a>
+                {% if i.id == 3 %}<span class="badge text-bg-primary" style="width: 35px; height: 15px; font-size: 10px; font-weight: lighter; position: absolute;  right: 10px; top: 10px;">NEW</span>
+                {% elif i.id == 4 %}<span class="badge text-bg-primary" style="width: 35px; height: 15px; font-size: 10px; font-weight: lighter; position: absolute;  right: 10px; top: 10px;">NEW</span>
+                {% elif i.id == 6 %}<span class="badge text-bg-primary" style="width: 35px; height: 15px; font-size: 10px; font-weight: lighter; position: absolute;  right: 10px; top: 10px;">NEW</span>{% endif %}
+                
+            </div>
+            <div>
+                <h5 style="text-align: center;">{{i.Name}}</h5>
+                <h6 style="text-align: center;">{{i.Cost}}/- Rs</h6>
+                <!-- <p>{{i.Image}}</p> -->
+            </div>
+            <div style="display: flex; justify-content: space-evenly; align-items: center;">
+                <a href="{% url 'APP:redmiaddtocart' i.slug i.id %}" class="btn btn-warning w-auto " style="font-size: 12px;">ADD TO CART</a>
+                <a href="{% url 'APP:redmibuynow' i.id %}" class="btn btn-primary w-auto" style="font-size: 12px;">BUY NOW</a>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<script src="{% static 'catnav.js' %}"></script>
+
+
+{% endblock body %}

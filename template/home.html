@@ -1,0 +1,154 @@
+{% extends 'nav.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'HP.css' %}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+{% endblock head %}
+
+{% block body %}
+
+<div id="mainhead">
+
+      <div id="carouselExampleDark" class="carousel carousel-dark slide">
+        <div class="carousel-indicators w-auto">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" id="ci" data-bs-interval="10000">
+            <h1 class="couhead"><span style="color: #1D63FF;" id="Eheading">E-MOBILES</span><br>THE PERFECT<br> CHOICE</h1>
+            <img src="{% static 'best.png' %}" alt="..." class="bi">
+          </div>
+          <div class="carousel-item" id="ci2" data-bs-interval="2000">
+            <h1 class="couhead">YOUR DATA IS<br><span style="color: #1D63FF;">SECURIED</span></h1>
+            <img src="{% static 'security.png' %}" alt="..." class="bi">
+          </div>
+          <div class="carousel-item" id="ci3">
+            <h1 class="couhead">EASY WAY FOR<br><span style="color: #1D63FF;">SHOPPING</span></h1>
+            <img src="{% static 'easyshopping.png' %}" alt="..." class="bi">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <!-- <span class="visually-hidden">Previous</span> -->
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <!-- <span class="visually-hidden">Next</span> -->
+        </button>
+      </div>
+        
+        <div data-aos="fade-up" data-aos-offset="30" id="btntrend" class="">
+        <a href="#trendingsdiv" id="trendingbtn">TRENDINGS</a>
+        </div>
+    
+        
+</div>
+
+
+<div id="trendingsdiv">
+    <h1 class="trendhead">NEWLY LAUNCHED MOBILES</h1><br>
+    <div>
+        {% for i in d %}
+        <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" id="trendingblocks">
+            <div class="trendImg">
+                <a href=""><img src="{{i.Trend1.Image.url}}" alt="trendingimages"></a>
+                <!-- <p>{{i.Image}}</p> -->
+            </div>
+            <div style="color: white; height: auto;">
+                <h2>{{i.Trend1.Name}}</h2>
+                <h6 style="font-weight: lighter;" id="info">{{i.Trend1.Info}}</h6>
+                <h3>{{i.Trend1.Cost}}/- Rs</h3>
+            </div>
+        </div><br><br><br><br><br>
+
+        <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" id="trendingblocks">
+            <div class="trendImg">
+                <a href=""><img src="{{i.Trend2.Image.url}}" alt="trendingimages"></a>
+                <!-- <p>{{i.Image}}</p> -->
+            </div>
+            <div style="color: white; height: auto;">
+                <h2>{{i.Trend2.Name}}</h2>
+                <h6 style="font-weight: lighter;" id="info">{{i.Trend2.Info}}</h6>
+                <h3>{{i.Trend2.Cost}}/- Rs</h3>
+            </div>
+        </div><br><br><br><br><br>
+
+        <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" id="trendingblocks">
+            <div class="trendImg">
+                <a href=""><img src="{{i.Trend3.Image.url}}" alt="trendingimages"></a>
+                <!-- <p>{{i.Image}}</p> -->
+            </div>
+            <div style="color: white; height: auto;">
+                <h2>{{i.Trend3.Name}}</h2>
+                <h6 style="font-weight: lighter;" id="info">{{i.Trend3.Info}}</h6>
+                <h3>{{i.Trend3.Cost}}/- Rs</h3>
+            </div>
+        </div><br><br><br><br><br>
+
+        <div data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" id="trendingblocks">
+            <div class="trendImg">
+                <a href=""><img src="{{i.Trend4.Image.url}}" alt="trendingimages"></a>
+                <!-- <p>{{i.Image}}</p> -->
+            </div>
+            <div style="color: white; height: auto;">
+                <h2>{{i.Trend4.Name}}</h2>
+                <h6 style="font-weight: lighter;" id="info">{{i.Trend4.Info}}</h6>
+                <h3>{{i.Trend4.Cost}}/- Rs</h3>
+            </div>
+        </div><br><br><br><br><br>
+        {% endfor %}
+        
+    </div>
+</div>
+
+<div class="lastdiv" >
+
+        <div data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="200" data-aos-offset="0" class="creacct">CREATE YOUR ACCOUNT IN </div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="400" data-aos-offset="0" class="creaccthead"><span style="color: #1D63FF;">E-MOBILES!<sup>*</sup></span></div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="600" data-aos-offset="0" class="creacct">& CLAIM 50% OFF.</div><br>
+        
+
+        <div data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="700" data-aos-offset="0" class="para">E-Mobiles is providing the brand new mobiles,</div>
+        <div data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="750" data-aos-offset="0" class="para">positive payments journey for the customers.</div>
+
+
+    
+
+        <div data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-delay="750" data-aos-offset="0" id="shopdiv">
+            <a href="{% url 'AppleApp:categories' %}" class="btn btn-outline-primary border-3 rounded-pill d-flex justify-content-center align-items-center" id="shpnow">SHOP NOW</a>
+        </div>
+
+        <div class="copyright">
+            <div>
+                <h6>&copy; 2024 <span style="color: #1D63FF;">E-MOBILES</span>. All Rights Reserved</h6>
+            </div>
+            <div>
+                <h6>CREATED BY USING DJANGO</h6>
+            </div>
+        </div>
+</div>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<script src="{% static 'home.js' %}"></script>
+<script>
+
+    let homeanchor = document.getElementById('homeanchor');
+
+    if(window.location.href == 'https://jayakara.pythonanywhere.com/'){
+        homeanchor.style.color = '#1D63FF';
+    }
+
+    else{
+        homeanchor.style.color = 'black';   
+    }
+</script>
+
+{% endblock body %}
